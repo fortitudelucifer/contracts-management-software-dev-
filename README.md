@@ -1,4 +1,4 @@
-# contracts-management-software-dev-
+# contracts-management-software-dev
 contracts management software dev  process
 reference: https://www.bilibili.com/video/BV13o4y1V7Jb?spm_id_from=333.788.videopod.episodes&vd_source=d49e0c134bc6c6180dab2a3de3c221f0
 
@@ -58,4 +58,22 @@ systemctl status mssql-server --no-pager
 
 
 ## Sql Server management studio 2022
-尽量都安装全
+尽量都安装全，方便全流程的开发
+
+## 环境搭建
+```cmd
+D:\code> mkdir fszn_contract
+D:\code> cd fszn_contract
+D:\code\fszn_contract> py -3 -m venv venv
+D:\code\fszn_contract> venv\Scripts\activate
+```
+```
+# requirement.txt
+Flask
+Flask-SQLAlchemy
+pyodbc
+python-dotenv
+```
+```cmd
+(venv) D:\code\fszn_contract> pip install -r requirements.txt
+```
