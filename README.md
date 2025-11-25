@@ -23,6 +23,17 @@ SQLServer 2022 配置管理器-网络配置-把TCP/IP启用
 - 添加
 - 确定
 
+#### employ sql server
+- 新建查询
+   - create detabase [name]
+- 最好用一个test用户来测试数据库
+- select
+- delete
+- update
+- join
+- drop
+- 注释 --
+
 ## Sql Server management studio 2022
 ```bash
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
@@ -43,3 +54,5 @@ sudo /opt/mssql/bin/mssql-conf setup
 systemctl status mssql-server --no-pager
 ```
 未完待续
+
+
