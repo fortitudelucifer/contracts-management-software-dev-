@@ -34,7 +34,7 @@ SQLServer 2022 配置管理器-网络配置-把TCP/IP启用
 - drop
 - 注释 --
 
-## Sql Server management studio 2022
+### ubuntu24.04
 ```bash
 curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | sudo gpg --dearmor -o /usr/share/keyrings/microsoft-prod.gpg
 ```
@@ -53,6 +53,9 @@ sudo /opt/mssql/bin/mssql-conf setup
 ```
 systemctl status mssql-server --no-pager
 ```
-未完待续
+未完待续 tbc
 
 
+
+## Sql Server management studio 2022
+尽量都安装全
