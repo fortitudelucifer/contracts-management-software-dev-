@@ -141,7 +141,7 @@ GO
 #### 虚拟环境venv打不开
 解决办法：用管理员权限打开cmd，然后cd改变路径直到目标路径
 
-#### Non-UTF-8中文报错，visual studio默认用了GBK编码
+#### Non-UTF-8中文报错，visual studio默认用了CRLF编码
 解决方法，在vscode和visual studio里都将编码默认模式确定为“无签名的UTF-8”，且将所有html文件重写了一遍
 
 #### 以一种访问权限不允许的方式做了一个访问套接字的尝试。
