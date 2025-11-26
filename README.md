@@ -28,6 +28,8 @@ SQLServer 2022 配置管理器-网络配置-把TCP/IP启用
    - create detabase [name]
 - 最好用一个test用户来测试数据库
 - select
+   - order
+   - desc
 - delete
 - update
 - join
@@ -60,7 +62,26 @@ systemctl status mssql-server --no-pager
 ## Sql Server management studio 2022
 尽量都安装全，方便全流程的开发
 
+# 项目框架
+```text
+fszn_contract/
+├── fszn/                   # 应用包
+│   ├── __init__.py
+│   ├── models.py
+│   ├── auth.py
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── home.html
+│   │   └── auth/
+│   │       ├── login.html
+│   │       └── register.html
+│   └── static/             # 先空着，以后放 CSS/JS
+├── config.py
+├── requirements.txt        # 已有
+└── run.py
+```
 ## 环境搭建
+1.本机创建项目和虚拟环境
 ```cmd
 D:\code> mkdir fszn_contract
 D:\code> cd fszn_contract
@@ -77,3 +98,50 @@ python-dotenv
 ```cmd
 (venv) D:\code\fszn_contract> pip install -r requirements.txt
 ```
+2.在SQL Server里创建数据库和专用账号（有 SQL Server 2022 Developer + SSMS 22）
+1.打开SMSS 22，连接测试用的实例
+2.
+```sql
+-- 1. 创建数据库
+CREATE DATABASE FSZN_DB;
+GO
+
+-- 2. 创建登录账号（注意把密码改成你自己的强密码）
+CREATE LOGIN fszn_user WITH PASSWORD = 'YourStrongPassword123!';
+GO
+
+-- 3. 在数据库中为这个登录创建用户，并赋予 db_owner 权限
+USE FSZN_DB;
+GO
+
+CREATE USER fszn_user FOR LOGIN fszn_user;
+GO
+
+ALTER ROLE db_owner ADD MEMBER fszn_user;
+GO
+```
+3.在SMSS 22里确认有
+- 数据库 FSZN_DB
+- 安全性→登录名fsnz_user
+- FSZN_DB→安全性→用户里有fsnz_user
+4.写配置文件config.py
+5.flask应用初始化fszn/init.py
+6.定义用户模型fszn/models.py
+7.身份认证蓝图fszn/auth.py（注册 + 登录 + 退出）
+8.基础模板fszn/templates/base.html
+9.主页模板fszn/templates/home.html
+10.登录/注册模板fszn/templates/auth/login.html和fszn/templates/auth/register.html
+11.启动入口run.py
+12.运行与测试
+  - 确认虚拟环境已激活（命令行前有 (venv)）
+  - 在项目根目录执行: (venv) D:\code\fszn_contract> python run.py
+  - 浏览器打开：http://127.0.0.1:5000/
+ 
+### 遇到的问题
+#### 虚拟环境venv打不开
+解决办法：用管理员权限打开cmd，然后cd改变路径直到目标路径
+
+#### Non-UTF-8中文报错，visual studio默认用了GBK编码
+解决方法，在vscode和visual studio里都将编码默认模式确定为“无签名的UTF-8”，且将所有html文件重写了一遍
+
+#### 以一种访问权限不允许的方式做了一个访问套接字的尝试。
