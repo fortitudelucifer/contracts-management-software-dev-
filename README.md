@@ -124,14 +124,23 @@ GO
 - 数据库 FSZN_DB
 - 安全性→登录名fsnz_user
 - FSZN_DB→安全性→用户里有fsnz_user
+
 4.写配置文件config.py
+
 5.flask应用初始化fszn/init.py
+
 6.定义用户模型fszn/models.py
+
 7.身份认证蓝图fszn/auth.py（注册 + 登录 + 退出）
+
 8.基础模板fszn/templates/base.html
+
 9.主页模板fszn/templates/home.html
+
 10.登录/注册模板fszn/templates/auth/login.html和fszn/templates/auth/register.html
+
 11.启动入口run.py
+
 12.运行与测试
   - 确认虚拟环境已激活（命令行前有 (venv)）
   - 在项目根目录执行: (venv) D:\code\fszn_contract> python run.py
@@ -139,9 +148,13 @@ GO
  
 ### 遇到的问题
 #### 虚拟环境venv打不开
-解决办法：用管理员权限打开cmd，然后cd改变路径直到目标路径
+解决方法：用管理员权限打开cmd，然后cd改变路径直到目标路径
 
 #### Non-UTF-8中文报错，visual studio默认用了CRLF编码
 解决方法，在vscode和visual studio里都将编码默认模式确定为“无签名的UTF-8”，且将所有html文件重写了一遍
 
 #### 以一种访问权限不允许的方式做了一个访问套接字的尝试。
+修改 run.py，换一个端口 + 明确 host
+
+#### 在终端输入netstat -ano | findstr :5000 netstat -ano | findstr :5001后没有任何反馈
+解决方法：用一个最小 socket 测试确认是系统拦截
