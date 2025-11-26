@@ -1,11 +1,17 @@
--- schema.sql
-CREATE DATABASE IF NOT EXISTS fszn_db DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE fszn_db;
+-- 1. 创建数据库
+CREATE DATABASE FSZN_DB;
+GO
 
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    password_hash VARCHAR(255) NOT NULL,
-    email VARCHAR(100) NOT NULL UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+-- 2. 创建登录账号
+CREATE LOGIN fszn_user WITH PASSWORD = 'YourStrongPassword123!';
+GO
+
+-- 3. 在数据库中为这个登录创建用户，并赋予 db_owner 权限
+USE FSZN_DB;
+GO
+
+CREATE USER fszn_user FOR LOGIN fszn_user;
+GO
+
+ALTER ROLE db_owner ADD MEMBER fszn_user;
+GO
