@@ -156,6 +156,13 @@ GO
 #### 以一种访问权限不允许的方式做了一个访问套接字的尝试。
 修改 run.py，换一个端口 + 明确 host
 
+#### git设置ssh公钥
+解决方法：
+```git bash
+ssh-keygen -t ed25519 -C "你的邮箱"
+```
+三次回车
+
 #### 在终端输入netstat -ano | findstr :5000 netstat -ano | findstr :5001后没有任何反馈
 解决方法：用一个最小 socket 测试确认是系统拦截
 
