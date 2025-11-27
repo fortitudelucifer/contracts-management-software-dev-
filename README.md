@@ -158,3 +158,6 @@ GO
 
 #### 在终端输入netstat -ano | findstr :5000 netstat -ano | findstr :5001后没有任何反馈
 解决方法：用一个最小 socket 测试确认是系统拦截
+
+#### 增删新条目的时候sql的条目自增
+解决方法：设置一个display_order
