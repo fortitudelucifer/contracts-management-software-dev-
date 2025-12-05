@@ -163,6 +163,8 @@ ssh-keygen -t ed25519 -C "你的邮箱"
 ```
 三次回车
 
+##### 每次新建仓库都要 git remote set-url origin git@github.com:fortitudelucifer/neme of repositories.git
+
 #### 在终端输入netstat -ano | findstr :5000 netstat -ano | findstr :5001后没有任何反馈
 解决方法：用一个最小 socket 测试确认是系统拦截
 
